@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class ItemCreatorService {
+public class ItemService {
 
     private final InventoryItemRepository inventoryItemRepository;
 
@@ -24,5 +24,17 @@ public class ItemCreatorService {
 
     public Optional<InventoryItem> getItemByName(String name) {
         return inventoryItemRepository.findByName(name);
+    }
+
+    public List<InventoryItem> getItemsByCategory(String category) {
+        return inventoryItemRepository.findByCategory(category);
+    }
+
+    public List<InventoryItem> getItemsByType(String type) {
+        return inventoryItemRepository.findByType(type);
+    }
+
+    public List<InventoryItem> getItemsByBrand(String brand) {
+        return inventoryItemRepository.findByBrand(brand);
     }
 }

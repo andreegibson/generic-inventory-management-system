@@ -1,7 +1,7 @@
 package com.allianceair.gims.controller;
 
 import com.allianceair.gims.model.InventoryItem;
-import com.allianceair.gims.service.ItemCreatorService;
+import com.allianceair.gims.service.ItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,21 +20,36 @@ import java.util.Optional;
 @RequestMapping("/items")
 public class ItemController {
 
-    private ItemCreatorService itemCreatorService;
+    private ItemService itemService;
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public InventoryItem add(@RequestBody InventoryItem item) {
-        return itemCreatorService.addItem(item);
+        return itemService.addItem(item);
     }
 
     @GetMapping
     public List<InventoryItem> getItems() {
-        return itemCreatorService.getItems();
+        return itemService.getItems();
     }
 
     @GetMapping("/name/{name}")
     public Optional<InventoryItem> getByName(@PathVariable String name) {
-        return itemCreatorService.getItemByName(name);
+        return itemService.getItemByName(name);
+    }
+
+    @GetMapping("/category/{category}")
+    public List<InventoryItem> getByCategory(@PathVariable String category) {
+        return itemService.getItemsByCategory(category);
+    }
+
+    @GetMapping("/type/{type}")
+    public List<InventoryItem> getByType(@PathVariable String type) {
+        return itemService.getItemsByType(type);
+    }
+
+    @GetMapping("/brand/{brand}")
+    public List<InventoryItem> getByBrand(@PathVariable String brand) {
+        return itemService.getItemsByBrand(brand);
     }
 }
