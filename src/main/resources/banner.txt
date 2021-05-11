@@ -1,0 +1,13 @@
+
+
+${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT}${AnsiColor.RED}=====      ${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT}     ${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT}${AnsiColor.RED}=======      ${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT}${AnsiColor.RED}===
+${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT}           ${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT}     ${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT} === ===     ${AnsiBackground.BLUE}${AnsiColor.BRIGHT_WHITE}:::${AnsiBackground.DEFAULT}
+${AnsiColor.RED}=== =====     ===     === === ===      =====
+${AnsiColor.BRIGHT_WHITE}===   ===     ===     ===     ===         ===
+${AnsiColor.RED} =======      ===     ===     ===     ======
+
+${AnsiColor.RED} :: Generic Inventory Management System ::
+${AnsiColor.BRIGHT_WHITE} :: Alliance Air, LLC ::
+${AnsiColor.BLUE} :: Spring Boot${spring-boot.formatted-version} ::
+
+${Ansi.DEFAULT}
