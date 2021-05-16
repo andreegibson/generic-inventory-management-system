@@ -4,6 +4,7 @@ import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.service.ItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,8 @@ import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
+//TODO - Make this better :)
+@CrossOrigin("http://localhost:8080")
 @RequestMapping("/items")
 public class ItemController {
 
