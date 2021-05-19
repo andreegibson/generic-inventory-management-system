@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +38,10 @@ public class ItemController {
     }
 
     @GetMapping("/name/{name}")
-    public Optional<InventoryItem> getByName(@PathVariable String name) {
-        return itemService.getItemByName(name);
+    public List<InventoryItem> getByName(@PathVariable String name, @RequestParam(required = false) String category) {
+        return category == null ?
+                itemService.getItemsByName(name)  :
+                itemService.getItemsByNameAndCategory(name, category);
     }
 
     @GetMapping("/category/{category}")

@@ -22,8 +22,11 @@ public class ItemService {
         return inventoryItemRepository.findAll();
     }
 
-    public Optional<InventoryItem> getItemByName(String name) {
+    public List<InventoryItem> getItemsByName(String name) {
         return inventoryItemRepository.findByName(name);
+    }
+    public List<InventoryItem> getItemsByNameAndCategory(String name, String category) {
+        return inventoryItemRepository.findAllByNameAndCategory(name, category);
     }
 
     public List<InventoryItem> getItemsByCategory(String category) {
