@@ -1,6 +1,7 @@
 package com.allianceair.gims.service;
 
 import com.allianceair.gims.model.InventoryItem;
+import com.allianceair.gims.model.ServiceOrder;
 import com.allianceair.gims.repository.InventoryItemRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,22 @@ public class ItemService {
 
     public List<InventoryItem> getItemsByBrand(String brand) {
         return inventoryItemRepository.findByBrand(brand);
+    }
+
+    public List<ServiceOrder> getServiceOrders(String id) {
+        return inventoryItemRepository.findById(id).map(InventoryItem::getServiceOrders).orElse(null);
+    }
+
+    public Optional<InventoryItem> addServiceOrder(String id, ServiceOrder serviceOrder) {
+        Optional<InventoryItem> result = inventoryItemRepository.findById(id);
+
+        //NOTE: Probably a better way to do this, will clean up later
+        result.ifPresent(item -> {
+            item.getServiceOrders().add(serviceOrder);
+
+            inventoryItemRepository.save(item);
+        });
+
+        return result;
     }
 }

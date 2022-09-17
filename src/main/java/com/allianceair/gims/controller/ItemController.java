@@ -1,6 +1,7 @@
 package com.allianceair.gims.controller;
 
 import com.allianceair.gims.model.InventoryItem;
+import com.allianceair.gims.model.ServiceOrder;
 import com.allianceair.gims.service.ItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -56,5 +58,15 @@ public class ItemController {
     @GetMapping("/brand/{brand}")
     public List<InventoryItem> getByBrand(@PathVariable String brand) {
         return itemService.getItemsByBrand(brand);
+    }
+
+    @PostMapping("/{id}/serviceorders")
+    public Optional<InventoryItem> addServiceOrder(@PathVariable String id, @RequestBody ServiceOrder serviceOrder) {
+        return itemService.addServiceOrder(id, serviceOrder);
+    }
+
+    @GetMapping("/{id}/serviceorders")
+    public List<ServiceOrder> getServiceOrders(@PathVariable String id) {
+        return itemService.getServiceOrders(id);
     }
 }
