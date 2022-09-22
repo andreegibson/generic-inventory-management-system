@@ -24,7 +24,7 @@ public class ItemService {
     }
 
     public List<InventoryItem> getItemsByName(String name) {
-        return inventoryItemRepository.findByName(name);
+        return inventoryItemRepository.findByNameStartsWith(name);
     }
     public List<InventoryItem> getItemsByNameAndCategory(String name, String category) {
         return inventoryItemRepository.findAllByNameAndCategory(name, category);

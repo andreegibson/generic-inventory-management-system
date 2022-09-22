@@ -6,10 +6,9 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface InventoryItemRepository extends MongoRepository<InventoryItem, String> {
-    List<InventoryItem> findByName(String name);
+    List<InventoryItem> findByNameStartsWith(String name);
     List<InventoryItem> findByCategory(String category);
     List<InventoryItem> findByType(String type);
     List<InventoryItem> findByBrand(String brand);
