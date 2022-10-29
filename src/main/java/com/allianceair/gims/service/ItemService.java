@@ -31,15 +31,15 @@ public class ItemService {
     }
 
     public List<InventoryItem> getItemsByCategory(String category) {
-        return inventoryItemRepository.findByCategory(category);
+        return inventoryItemRepository.findByCategoryStartsWith(category);
     }
 
     public List<InventoryItem> getItemsByType(String type) {
-        return inventoryItemRepository.findByType(type);
+        return inventoryItemRepository.findByTypeStartsWith(type);
     }
 
     public List<InventoryItem> getItemsByBrand(String brand) {
-        return inventoryItemRepository.findByBrand(brand);
+        return inventoryItemRepository.findByBrandStartsWith(brand);
     }
 
     public List<ServiceOrder> getServiceOrders(String id) {
