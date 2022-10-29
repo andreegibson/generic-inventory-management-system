@@ -21,7 +21,7 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 //TODO - Make this better :)
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/items")
 public class ItemController {
 
