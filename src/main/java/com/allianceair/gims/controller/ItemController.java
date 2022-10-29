@@ -1,5 +1,6 @@
 package com.allianceair.gims.controller;
 
+import com.allianceair.gims.dto.InventoryDto;
 import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.ServiceOrder;
 import com.allianceair.gims.service.ItemService;
@@ -34,7 +35,7 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<InventoryItem> getItems() {
+    public List<InventoryDto> getItems() {
         return itemService.getItems();
     }
 

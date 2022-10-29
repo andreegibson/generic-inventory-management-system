@@ -1,21 +1,20 @@
-package com.allianceair.gims.model;
+package com.allianceair.gims.dto;
 
+import com.allianceair.gims.model.ServiceOrder;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Data
 @Builder
-@Document(collection = "items")
-public class InventoryItem {
-
-    @Id private String id;
+public class InventoryDto {
+    @Id
+    private String id;
     private String name;
-    private Integer category;
-    private Integer type;
+    private String category;
+    private String type;
     private String brand;
     private String description;
     private String imageUrl;

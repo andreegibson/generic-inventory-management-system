@@ -1,26 +1,45 @@
 package com.allianceair.gims.service;
 
+import com.allianceair.gims.dto.InventoryDto;
 import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.ServiceOrder;
+import com.allianceair.gims.repository.CategoryRepository;
 import com.allianceair.gims.repository.InventoryItemRepository;
+import com.allianceair.gims.repository.TypeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class ItemService {
 
     private final InventoryItemRepository inventoryItemRepository;
+    private final CategoryRepository categoryRepository;
+    private final TypeRepository typeRepository;
 
     public InventoryItem addItem(InventoryItem item) {
         return inventoryItemRepository.save(item);
     }
 
-    public List<InventoryItem> getItems() {
-        return inventoryItemRepository.findAll();
+    public List<InventoryDto> getItems() {
+
+        //NOTE: I dunno I do not love this, but I do not hate it. But this might be me mapping my dinosaur technology solutions to the new age
+        return inventoryItemRepository.findAll().stream()
+                .map(item -> InventoryDto.builder()
+                        .id(item.getId())
+                        .name(item.getName())
+                        .category(categoryRepository.findById(item.getCategory()).get().getName())
+                        .type(typeRepository.findById(item.getType()).get().getName())
+                        .brand(item.getBrand())
+                        .description(item.getDescription())
+                        .imageUrl(item.getImageUrl())
+                        .serviceOrders(item.getServiceOrders())
+                        .build())
+                .collect(Collectors.toList());
     }
 
     public List<InventoryItem> getItemsByName(String name) {
