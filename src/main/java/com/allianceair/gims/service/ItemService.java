@@ -24,22 +24,22 @@ public class ItemService {
     }
 
     public List<InventoryItem> getItemsByName(String name) {
-        return inventoryItemRepository.findByNameStartsWith(name);
+        return inventoryItemRepository.findByNameStartsWithIgnoreCase(name);
     }
     public List<InventoryItem> getItemsByNameAndCategory(String name, String category) {
         return inventoryItemRepository.findAllByNameAndCategory(name, category);
     }
 
     public List<InventoryItem> getItemsByCategory(String category) {
-        return inventoryItemRepository.findByCategoryStartsWith(category);
+        return inventoryItemRepository.findByCategoryStartsWithIgnoreCase(category);
     }
 
     public List<InventoryItem> getItemsByType(String type) {
-        return inventoryItemRepository.findByTypeStartsWith(type);
+        return inventoryItemRepository.findByTypeStartsWithIgnoreCase(type);
     }
 
     public List<InventoryItem> getItemsByBrand(String brand) {
-        return inventoryItemRepository.findByBrandStartsWith(brand);
+        return inventoryItemRepository.findByBrandStartsWithIgnoreCase(brand);
     }
 
     public List<ServiceOrder> getServiceOrders(String id) {
