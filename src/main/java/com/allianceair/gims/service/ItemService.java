@@ -37,12 +37,17 @@ public class ItemService {
     public List<InventoryDto> getItemsByName(String name) {
         return mapToDtos(inventoryItemRepository.findByNameStartsWithIgnoreCase(name));
     }
-    public List<InventoryDto> getItemsByNameAndCategory(String name, String category) {
-        return mapToDtos(inventoryItemRepository.findAllByNameAndCategory(name, category));
+    public List<InventoryDto> getItemsByNameAndCategory(String name, String categoryName) {
+        List<Category> categories = categoryRepository.findByNameStartsWithIgnoreCase(categoryName);
+        List<InventoryItem> items = new ArrayList<>();
+
+        categories.forEach(category -> items.addAll(inventoryItemRepository.findAllByNameAndCategory(name, category.getId())));
+
+        return mapToDtos(items);
     }
 
     public List<InventoryDto> getItemsByCategory(String categoryName) {
-        List<Category> categories = categoryRepository.findByNameStartsWith(categoryName);
+        List<Category> categories = categoryRepository.findByNameStartsWithIgnoreCase(categoryName);
         List<InventoryItem> items = new ArrayList<>();
 
         log.debug("found categories {}", categories);
@@ -54,7 +59,7 @@ public class ItemService {
     }
 
     public List<InventoryDto> getItemsByType(String typeName) {
-        List<Type> types = typeRepository.findByNameStartsWith(typeName);
+        List<Type> types = typeRepository.findByNameStartsWithIgnoreCase(typeName);
         List<InventoryItem> items = new ArrayList<>();
 
         types.forEach(type -> items.addAll(inventoryItemRepository.findByType(type.getId())));
