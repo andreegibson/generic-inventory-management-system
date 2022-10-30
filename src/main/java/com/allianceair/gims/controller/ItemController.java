@@ -40,24 +40,24 @@ public class ItemController {
     }
 
     @GetMapping("/name/{name}")
-    public List<InventoryItem> getByName(@PathVariable String name, @RequestParam(required = false) String category) {
+    public List<InventoryDto> getByName(@PathVariable String name, @RequestParam(required = false) String category) {
         return category == null ?
                 itemService.getItemsByName(name)  :
                 itemService.getItemsByNameAndCategory(name, category);
     }
 
     @GetMapping("/category/{category}")
-    public List<InventoryItem> getByCategory(@PathVariable String category) {
+    public List<InventoryDto> getByCategory(@PathVariable String category) {
         return itemService.getItemsByCategory(category);
     }
 
     @GetMapping("/type/{type}")
-    public List<InventoryItem> getByType(@PathVariable String type) {
+    public List<InventoryDto> getByType(@PathVariable String type) {
         return itemService.getItemsByType(type);
     }
 
     @GetMapping("/brand/{brand}")
-    public List<InventoryItem> getByBrand(@PathVariable String brand) {
+    public List<InventoryDto> getByBrand(@PathVariable String brand) {
         return itemService.getItemsByBrand(brand);
     }
 
