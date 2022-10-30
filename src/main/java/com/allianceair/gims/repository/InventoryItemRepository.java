@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface InventoryItemRepository extends MongoRepository<InventoryItem, String> {
     List<InventoryItem> findByNameStartsWithIgnoreCase(String name);
-    List<InventoryItem> findByCategoryStartsWithIgnoreCase(String category);
-    List<InventoryItem> findByTypeStartsWithIgnoreCase(String type);
+    List<InventoryItem> findByCategory(Integer category);
+    List<InventoryItem> findByType(Integer type);
     List<InventoryItem> findByBrandStartsWithIgnoreCase(String brand);
 
     @Query("{ $and : [ { name: '#name' } , { category : '#category' } ] }")
