@@ -8,10 +8,10 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface InventoryItemRepository extends MongoRepository<InventoryItem, String> {
-    List<InventoryItem> findByNameStartsWith(String name);
-    List<InventoryItem> findByCategoryStartsWith(String category);
-    List<InventoryItem> findByTypeStartsWith(String type);
-    List<InventoryItem> findByBrandStartsWith(String brand);
+    List<InventoryItem> findByNameStartsWithIgnoreCase(String name);
+    List<InventoryItem> findByCategoryStartsWithIgnoreCase(String category);
+    List<InventoryItem> findByTypeStartsWithIgnoreCase(String type);
+    List<InventoryItem> findByBrandStartsWithIgnoreCase(String brand);
 
     @Query("{ $and : [ { name: '#name' } , { category : '#category' } ] }")
     List<InventoryItem> findAllByNameAndCategory(@Param("name") String name, @Param("category") String category);
