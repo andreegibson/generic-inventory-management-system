@@ -14,8 +14,8 @@ public class InventoryItem {
 
     @Id private String id;
     private String name;
-    private Integer category;
-    private Integer type;
+    private String category;
+    private String type;
     private String brand;
     private String description;
     private String imageUrl;

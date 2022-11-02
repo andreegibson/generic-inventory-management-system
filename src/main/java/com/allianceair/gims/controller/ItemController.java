@@ -1,6 +1,5 @@
 package com.allianceair.gims.controller;
 
-import com.allianceair.gims.dto.InventoryDto;
 import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.ServiceOrder;
 import com.allianceair.gims.service.ItemService;
@@ -35,29 +34,29 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<InventoryDto> getItems() {
+    public List<InventoryItem> getItems() {
         return itemService.getItems();
     }
 
     @GetMapping("/name/{name}")
-    public List<InventoryDto> getByName(@PathVariable String name, @RequestParam(required = false) String category) {
+    public List<InventoryItem> getByName(@PathVariable String name, @RequestParam(required = false) String category) {
         return category == null ?
                 itemService.getItemsByName(name)  :
                 itemService.getItemsByNameAndCategory(name, category);
     }
 
     @GetMapping("/category/{category}")
-    public List<InventoryDto> getByCategory(@PathVariable String category) {
+    public List<InventoryItem> getByCategory(@PathVariable String category) {
         return itemService.getItemsByCategory(category);
     }
 
     @GetMapping("/type/{type}")
-    public List<InventoryDto> getByType(@PathVariable String type) {
+    public List<InventoryItem> getByType(@PathVariable String type) {
         return itemService.getItemsByType(type);
     }
 
     @GetMapping("/brand/{brand}")
-    public List<InventoryDto> getByBrand(@PathVariable String brand) {
+    public List<InventoryItem> getByBrand(@PathVariable String brand) {
         return itemService.getItemsByBrand(brand);
     }
 

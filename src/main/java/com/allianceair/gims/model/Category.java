@@ -11,6 +11,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "categories")
 public class Category {
     @Id
-    private Integer id;
-    private String name;
+    private String Id;
 }

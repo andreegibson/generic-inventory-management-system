@@ -11,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Type {
 
     @Id
-    private Integer id;
-    private String name;
+    private String Id;
     private Boolean consumable;
 }
