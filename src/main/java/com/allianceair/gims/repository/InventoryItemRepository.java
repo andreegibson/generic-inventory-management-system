@@ -14,5 +14,5 @@ public interface InventoryItemRepository extends MongoRepository<InventoryItem, 
     List<InventoryItem> findByBrandStartsWithIgnoreCase(String brand);
 
     @Query("{ $and : [ { name: '#name' } , { category : '#category' } ] }")
-    List<InventoryItem> findAllByNameAndCategory(@Param("name") String name, @Param("category") String category);
+    List<InventoryItem> findAllByNameAndCategoryStartsWithIgnoreCase(@Param("name") String name, @Param("category") String category);
 }

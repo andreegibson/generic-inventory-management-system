@@ -4,11 +4,13 @@ import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.ServiceOrder;
 import com.allianceair.gims.repository.InventoryItemRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class ItemService {
@@ -27,7 +29,7 @@ public class ItemService {
         return inventoryItemRepository.findByNameStartsWithIgnoreCase(name);
     }
     public List<InventoryItem> getItemsByNameAndCategory(String name, String category) {
-        return inventoryItemRepository.findAllByNameAndCategory(name, category);
+        return inventoryItemRepository.findAllByNameAndCategoryStartsWithIgnoreCase(name, category);
     }
 
     public List<InventoryItem> getItemsByCategory(String category) {
