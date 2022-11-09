@@ -4,6 +4,7 @@ import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.ServiceOrder;
 import com.allianceair.gims.service.ItemService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import java.util.Optional;
 //TODO - Make this better :)
 @CrossOrigin("http://localhost:3000")
 @RequestMapping("/items")
+@Slf4j
 public class ItemController {
 
     private final ItemService itemService;
@@ -62,11 +64,15 @@ public class ItemController {
 
     @PostMapping("/{id}/serviceorders")
     public Optional<InventoryItem> addServiceOrder(@PathVariable String id, @RequestBody ServiceOrder serviceOrder) {
+        log.info("Adding service order to item {}", id);
+
         return itemService.addServiceOrder(id, serviceOrder);
     }
 
     @GetMapping("/{id}/serviceorders")
     public List<ServiceOrder> getServiceOrders(@PathVariable String id) {
+        log.info("getting service orders");
+
         return itemService.getServiceOrders(id);
     }
 }

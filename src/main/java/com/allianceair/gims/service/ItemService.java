@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,6 +57,10 @@ public class ItemService {
 
         //NOTE: Probably a better way to do this, will clean up later
         result.ifPresent(item -> {
+            if(item.getServiceOrders() == null) {
+                item.setServiceOrders(new ArrayList<>() {
+                });
+            }
             item.getServiceOrders().add(serviceOrder);
 
             inventoryItemRepository.save(item);

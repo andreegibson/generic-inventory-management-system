@@ -5,11 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
 public class ServiceOrder {
-    private LocalDateTime serviceDateTime;
+    private Date serviceDateTime;
     private String serviceDescription;
-    private LocalDateTime serviceCompletedDate;
+    private Date serviceCompletedDate;
+    private LocalDateTime created;
+    private LocalDateTime lastModifed;
 }
