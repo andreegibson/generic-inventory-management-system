@@ -10,7 +10,7 @@ import java.util.Date;
 @Data
 @Builder
 public class ServiceOrder {
-    private Date serviceDateTime;
+    private Date serviceDate;
     private String serviceDescription;
     private Date serviceCompletedDate;
     private LocalDateTime created;
