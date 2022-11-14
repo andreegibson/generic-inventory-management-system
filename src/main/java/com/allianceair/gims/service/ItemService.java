@@ -2,6 +2,7 @@ package com.allianceair.gims.service;
 
 import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.ServiceOrder;
+import com.allianceair.gims.model.query.InventorySummary;
 import com.allianceair.gims.repository.InventoryItemRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +51,10 @@ public class ItemService {
 
     public List<ServiceOrder> getServiceOrders(String id) {
         return inventoryItemRepository.findById(id).map(InventoryItem::getServiceOrders).orElse(null);
+    }
+
+    public List<InventorySummary> countInventoryByType() {
+        return inventoryItemRepository.countInventoryByType();
     }
 
     public Optional<InventoryItem> addServiceOrder(String id, ServiceOrder serviceOrder) {

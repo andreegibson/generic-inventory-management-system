@@ -2,6 +2,7 @@ package com.allianceair.gims.controller;
 
 import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.ServiceOrder;
+import com.allianceair.gims.model.query.InventorySummary;
 import com.allianceair.gims.service.ItemService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -74,5 +75,10 @@ public class ItemController {
         log.info("getting service orders");
 
         return itemService.getServiceOrders(id);
+    }
+
+    @GetMapping("/counts/type")
+    public List<InventorySummary> getCountByType() {
+        return itemService.countInventoryByType();
     }
 }
