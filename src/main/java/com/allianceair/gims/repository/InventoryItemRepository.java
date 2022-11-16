@@ -26,4 +26,7 @@ public interface InventoryItemRepository extends MongoRepository<InventoryItem, 
     })
     public List<InventorySummary> countInventoryByType();
 
+    @Query(value = "{ \"serviceOrders.serviceDescription\": { $exists: true }" +
+            ", \"serviceOrders.serviceCompletedDate\": { $exists: false }}", count = true)
+    public Long countOpenServiceOrders();
 }

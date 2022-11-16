@@ -73,4 +73,8 @@ public class ItemService {
 
         return result;
     }
+
+    public Long countOpenServiceOrders() {
+        return inventoryItemRepository.countOpenServiceOrders();
+    }
 }

@@ -81,4 +81,9 @@ public class ItemController {
     public List<InventorySummary> getCountByType() {
         return itemService.countInventoryByType();
     }
+
+    @GetMapping("/counts/serviceorders")
+    public Long getCountOpenServiceOrders() {
+        return itemService.countOpenServiceOrders();
+    }
 }
