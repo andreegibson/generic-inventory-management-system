@@ -26,4 +26,5 @@ public class WorkOrder {
     private LocalDate completedDate;
     private LocalDateTime dateAdded;
     private List<String> inventoryIds;
+    private LocalDateTime lastModified;
 }
