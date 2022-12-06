@@ -1,6 +1,7 @@
 package com.allianceair.gims.service;
 
 import com.allianceair.gims.model.InventoryItem;
+import com.allianceair.gims.model.InventoryStatus;
 import com.allianceair.gims.model.ServiceOrder;
 import com.allianceair.gims.model.query.InventorySummary;
 import com.allianceair.gims.repository.InventoryItemRepository;
@@ -31,22 +32,22 @@ public class ItemService {
     }
 
     public List<InventoryItem> getItemsByName(String name) {
-        return inventoryItemRepository.findByNameStartsWithIgnoreCase(name);
+        return inventoryItemRepository.findByNameStartsWithIgnoreCaseAndDateDeletedIsNull(name);
     }
     public List<InventoryItem> getItemsByNameAndCategory(String name, String category) {
         return inventoryItemRepository.findAllByNameAndCategoryStartsWithIgnoreCase(name, category);
     }
 
     public List<InventoryItem> getItemsByCategory(String category) {
-        return inventoryItemRepository.findByCategoryStartsWithIgnoreCase(category);
+        return inventoryItemRepository.findByCategoryStartsWithIgnoreCaseAndDateDeletedIsNull(category);
     }
 
     public List<InventoryItem> getItemsByType(String type) {
-        return inventoryItemRepository.findByTypeStartsWithIgnoreCase(type);
+        return inventoryItemRepository.findByTypeStartsWithIgnoreCaseAndDateDeletedIsNull(type);
     }
 
     public List<InventoryItem> getItemsByBrand(String brand) {
-        return inventoryItemRepository.findByBrandStartsWithIgnoreCase(brand);
+        return inventoryItemRepository.findByBrandStartsWithIgnoreCaseAndDateDeletedIsNull(brand);
     }
 
     public List<ServiceOrder> getServiceOrders(String id) {
@@ -76,5 +77,15 @@ public class ItemService {
 
     public Long countOpenServiceOrders() {
         return inventoryItemRepository.countOpenServiceOrders();
+    }
+
+    public void chargeOffItem(String inventoryId, String reason) {
+        inventoryItemRepository.findById(inventoryId).ifPresent(item -> {
+            item.setInventoryStatus(InventoryStatus.Deleted);
+            item.setChargeOfReason(reason);
+            item.setDateDeleted(LocalDateTime.now());
+
+            inventoryItemRepository.save(item);
+        });
     }
 }
