@@ -24,4 +24,5 @@ public class InventoryItem {
     private InventoryStatus inventoryStatus;
     private LocalDateTime dateAdded;
     private LocalDateTime dateDeleted;
+    private String chargeOfReason;
 }
