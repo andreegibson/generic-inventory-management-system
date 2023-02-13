@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 //TODO - Make this better :)
 @CrossOrigin("http://localhost:3000")
-@RequestMapping("/workorders")
+@RequestMapping("/purchaseorders")
 @Slf4j
 public class PurchaseOrderController {
     @Autowired
