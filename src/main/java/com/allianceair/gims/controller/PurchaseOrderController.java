@@ -28,4 +28,14 @@ public class PurchaseOrderController {
     public PurchaseOrder addPurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
         return purchaseOrderService.addPurchaseOrder(purchaseOrder);
     }
+
+    @GetMapping("/{id}")
+    public PurchaseOrder findPurchaseOrder(@PathVariable String id) {
+        return purchaseOrderService.findById(id);
+    }
+
+    @PutMapping()
+    public PurchaseOrder updatePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
+        return purchaseOrderService.update(purchaseOrder);
+    }
 }
