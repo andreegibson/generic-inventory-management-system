@@ -4,7 +4,6 @@ import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.PurchaseOrder;
 import com.allianceair.gims.model.PurchaseOrderItem;
 import com.allianceair.gims.model.PurchaseOrderStatus;
-import com.allianceair.gims.repository.InventoryItemRepository;
 import com.allianceair.gims.repository.PurchaseOrderRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -83,7 +82,7 @@ public class PurchaseOrderService {
         },
                 () -> {throw new IllegalArgumentException();});
 
-        return purchaseOrderRepository.save(purchaseOrder);
+        return update(purchaseOrder);
     }
 
     private void receiveInventory(int quantity, String purchaseOrderId, PurchaseOrderItem purchaseOrderItem) {
