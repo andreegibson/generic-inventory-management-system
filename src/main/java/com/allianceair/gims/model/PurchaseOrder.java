@@ -17,6 +17,7 @@ public class PurchaseOrder {
     @Id
     private String id;
     private String vendor;
+    private PurchaseOrderStatus status;
     private List<PurchaseOrderItem> items;
     private LocalDateTime dateAdded;
     private LocalDateTime lastModified;

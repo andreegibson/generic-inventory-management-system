@@ -25,4 +25,5 @@ public class InventoryItem {
     private LocalDateTime dateAdded;
     private LocalDateTime dateDeleted;
     private String chargeOfReason;
+    private String purchaseOrderId;
 }

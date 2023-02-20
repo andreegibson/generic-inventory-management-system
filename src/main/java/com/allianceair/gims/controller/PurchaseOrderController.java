@@ -38,4 +38,9 @@ public class PurchaseOrderController {
     public PurchaseOrder updatePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
         return purchaseOrderService.update(purchaseOrder);
     }
+
+    @PutMapping("/receive")
+    public PurchaseOrder receivePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
+        return purchaseOrderService.receive(purchaseOrder);
+    }
 }
