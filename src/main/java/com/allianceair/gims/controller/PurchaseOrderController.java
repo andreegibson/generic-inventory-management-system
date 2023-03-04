@@ -43,4 +43,10 @@ public class PurchaseOrderController {
     public PurchaseOrder receivePurchaseOrder(@RequestBody PurchaseOrder purchaseOrder) {
         return purchaseOrderService.receive(purchaseOrder);
     }
+
+    @PutMapping("/{id}/cancel")
+    public PurchaseOrder cancelPurchaseOrder(@PathVariable String id) {
+        log.info("cancelling order {}", id);
+        return purchaseOrderService.cancel(id);
+    }
 }
