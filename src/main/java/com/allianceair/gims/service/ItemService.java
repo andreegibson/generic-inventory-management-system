@@ -1,5 +1,6 @@
 package com.allianceair.gims.service;
 
+import com.allianceair.gims.model.ChargeOffCodes;
 import com.allianceair.gims.model.InventoryItem;
 import com.allianceair.gims.model.InventoryStatus;
 import com.allianceair.gims.model.ServiceOrder;
@@ -11,8 +12,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -87,5 +90,16 @@ public class ItemService {
 
             inventoryItemRepository.save(item);
         });
+    }
+
+    public InventoryItem findById(String id) {
+        return inventoryItemRepository.findById(id).orElseThrow();
+    }
+
+    public List<String> getChargeOffCodes() {
+        return Arrays.asList(ChargeOffCodes.values()).stream()
+                .filter(code -> !code.equals(ChargeOffCodes.Sold))
+                .map(code -> code.toString())
+                .collect(Collectors.toList());
     }
 }
