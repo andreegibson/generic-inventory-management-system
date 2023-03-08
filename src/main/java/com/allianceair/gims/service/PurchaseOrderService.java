@@ -99,4 +99,15 @@ public class PurchaseOrderService {
                     .build());
         }
     }
+
+    public PurchaseOrder cancel(String id) {
+        PurchaseOrder purchaseOrder = purchaseOrderRepository.findById(id)
+                .orElseThrow();
+
+        purchaseOrder.setStatus(PurchaseOrderStatus.Cancelled);
+
+        update(purchaseOrder);
+
+        return purchaseOrder;
+    }
 }
